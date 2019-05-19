@@ -1,0 +1,54 @@
+<launch>
+    <arg name="x"       default="0.0"/>
+    <arg name="y"       default="0.0"/>
+    <arg name="z"       default="0.8"/>
+    <arg name="roll"    default="1.57"/>
+    <arg name="pitch"   default="0.0"/>
+    <arg name="yaw"     default="0.0"/>
+
+    <param name="robot_description" command="$(find xacro)/xacro.py $(find hyq_sims)/xacro/robot.xacro" />
+
+    <node name="urdf_spawner"   pkg="gazebo_ros"    type="spawn_model"  respawn="false" output="screen" args="-urdf -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw) -model hyq -param robot_description"/>
+
+    <rosparam file="$(find hyq_sims)/config/hyq.yaml"   command="load"/>
+
+    <node name="robot_state_publisher"  pkg="robot_state_publisher" ns="/hyq"   type="robot_state_publisher"    respawn="false" output="screen">
+        <param name="publish_frequency" type="double"   value="30.0"/>
+        <param name="ignore_timestamp"  type="bool"     value="true"/>
+        <param name="tf_prefix"         type="string"   value="hyq" />
+        <remap from="/joint_states"     to="/hyq/joint_states" />
+    </node>
+
+
+    <node name="spawner" pkg="controller_manager"   type="spawner"  respawn="false" output="screen" ns="/hyq"
+            args="joint_state_controller
+                  lf_haa_joint_position_controller
+                  lf_hfe_joint_position_controller
+                  lf_kfe_joint_position_controller
+                  rf_haa_joint_position_controller
+                  rf_hfe_joint_position_controller
+                  rf_kfe_joint_position_controller
+                  lh_haa_joint_position_controller
+                  lh_hfe_joint_position_controller
+                  lh_kfe_joint_position_controller
+                  rh_haa_joint_position_controller
+                  rh_hfe_joint_position_controller
+                  rh_kfe_joint_position_controller
+                  --shutdown-time 3">
+    </node> 
+    <node pkg="hyq_sims" name="joint_publisher_node" type="joint_publisher.py" output="screen"/>
+  
+</launch>
+
+
+<!-- chmod +x ~/Documents/hyq_ws/src/hyq_sims/src/controllers_connecion.py -->
+<!-- chmod +x ~/Documents/hyq_ws/src/hyq_sims/src/DDPG.py -->
+<!-- chmod +x ~/Documents/hyq_ws/src/hyq_sims/src/Qlearn.py -->
+<!-- chmod +x ~/Documents/hyq_ws/src/hyq_sims/src/gazebo_connection.py -->
+<!-- chmod +x ~/Documents/hyq_ws/src/hyq_sims/src/hyq_env.py -->
+<!-- chmod +x ~/Documents/hyq_ws/src/hyq_sims/src/hyq_state.py -->
+<!-- chmod +x ~/Documents/hyq_ws/src/hyq_sims/src/joint_publisher.py -->
+<!-- chmod +x ~/Documents/hyq_ws/src/hyq_sims/src/training01.py -->
+<!-- chmod +x ~/Documents/hyq_ws/src/hyq_sims/src/train02.py -->
+<!-- source ~/Documents/hyq_ws/devel/setup.sh -->
+<!-- roslaunch hyq_sims robot_spawn.launch -->

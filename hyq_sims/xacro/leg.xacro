@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<!-- leg macro definiction -->
+	<xacro:macro name="hyq_leg" params="name parent *origin reflect_hip reflect_upper reflect_front">
+		<!-- Joints -->
+		<!-- Hip assembly joint -->
+		<joint name="${name}_haa_joint" type="revolute">
+			<xacro:insert_block name="origin"/>
+			<parent link="${parent}"/>
+			<child  link="${name}_hipassembly"/>
+			<axis xyz="0 0 1"/>
+			<limit effort="1000.0" velocity="0.1" lower="${-7*PI/18}" upper="${PI/6}"/>
+		</joint>
+		
+		<!-- Upper leg joint -->
+		<joint name="${name}_hfe_joint" type="revolute">
+			<origin xyz="${d_tbb} 0 0" rpy="${reflect_upper*PI/2} 0 0"/>
+			<parent link="${name}_hipassembly"/>
+			<child  link="${name}_upperleg"/>
+			<axis xyz="0 0 1"/>
+			<limit effort="800.0" velocity="0.1"
+          lower="${-(1+reflect_front)*5*PI/36-(1-reflect_front)*7*PI/36}"
+          upper="${(1-reflect_front)*5*PI/36+(1+reflect_front)*7*PI/36}"/>
+		</joint>
+		
+		<!-- Lower leg joint -->
+		<joint name="${name}_kfe_joint" type="revolute">
+			<origin xyz="${d_p1p2} 0 0" rpy="0 0 0"/>
+			<parent link="${name}_upperleg"/>
+			<child  link="${name}_lowerleg"/>
+			<axis xyz="0 0 1"/>
+			<limit effort="800.0" velocity="0.1"
+          lower="${-(1+reflect_front)*7*PI/18+(1-reflect_front)*PI/18}"
+          upper="${(1-reflect_front)*7*PI/18-(1+reflect_front)*PI/18}"/>
+		</joint>
+
+		<!-- Foot joint -->
+		<joint name="${name}_foot_joint" type="fixed">
+			<origin xyz="0.35 0 0" rpy="${PI/2} 0 ${-PI/2}"/>
+			<parent link="${name}_lowerleg"/>
+			<child  link="${name}_foot"/>
+		</joint>
+
+		<!-- Links -->
+		<!-- Hip assembly link -->
+		<link name="${name}_hipassembly">
+            <inertial>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <mass value="0.1168" />
+                <inertia ixx="0.00140906974933" ixy="0.0" ixz="0.0" iyy="0.001529597616" iyz="0.0" izz="0.000218659333333"/>
+            </inertial>
+			<visual>
+				<origin xyz="0 0 0" rpy="${(1-reflect_hip)*PI/2} 0 0"/>
+				<geometry>
+					<mesh filename="package://hyq_descriptions/meshes/leg/hipassembly.dae" scale="1 1 1"/>
+				</geometry>
+                <material name="blue"/>
+			</visual>
+            <collision>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+	            <geometry>
+	                <mesh filename="package://hyq_descriptions/meshes/leg/hipassembly.dae" scale="1 1 1"/>
+	            </geometry>
+            </collision>
+		</link>
+		
+		<!-- Upper leg link -->
+		<link name="${name}_upperleg">
+			<visual> 
+				<origin xyz="0 0 0" rpy="${(1-reflect_front)*PI/2} 0 0"/>
+				<geometry>
+					<mesh filename="package://hyq_descriptions/meshes/leg/upperleg.dae" scale="1 1 1"/>
+				</geometry>
+                <material name="white"/>
+			</visual>
+            <collision>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+	            <geometry>
+	                <mesh filename="package://hyq_descriptions/meshes/leg/upperleg.dae" scale="1 1 1"/>
+	            </geometry>
+            </collision>
+            <inertial>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <mass value="0.1168" />
+                <inertia ixx="0.000119502849333" ixy="0.0" ixz="0.0" iyy="0.00158478921733" iyz="0.0" izz="0.00158585686667"/>
+            </inertial>
+		</link>
+		
+		<!-- Lower leg link -->
+		<link name="${name}_lowerleg">
+            <inertial>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <mass value="0.0292" />
+                <inertia ixx="1.74153666667e-05" ixy="0.0" ixz="0.0" iyy="0.000370889177667" iyz="0.0" izz="0.000363771677667"/>
+            </inertial>
+			<visual>
+				<geometry>
+					<mesh filename="package://hyq_descriptions/meshes/leg/lowerleg.dae" scale="1 1 1"/>
+				</geometry>
+				<material name="white"/>
+			</visual>
+            <collision>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+	            <geometry>
+	                <mesh filename="package://hyq_descriptions/meshes/leg/lowerleg.dae" scale="1 1 1"/>
+	            </geometry>
+            </collision>
+		</link>
+		
+
+		<!-- Foot link -->
+        <link name="${name}_foot">
+			<inertial >
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<mass value="0.0001" />
+				<inertia ixx="1.6e-08" ixy="0.0" ixz="0.0" iyy="1.6e-08" iyz="0.0" izz="1.6e-08"/>
+			</inertial>
+			<collision >
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<sphere radius="0.020"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin rpy="0.0 0 0" xyz="0 0 0"/>
+				<geometry>
+					<sphere radius="0.020"/>
+				</geometry>
+				<material name="red">
+					<color rgba="1.0 0 0 1.0"/>
+				</material>
+			</visual>
+		</link>
+		
+	</xacro:macro>
+
+</robot>

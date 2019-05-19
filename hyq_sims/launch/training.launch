@@ -1,0 +1,8 @@
+<launch>
+
+    <!-- Load the parameters for the algorithm -->
+    <rosparam command="load" file="$(find hyq_sims)/config/DDPG.yaml" />
+
+    <!-- Launch the training system -->
+    <node pkg="hyq_sims" name="hyq_gym" type="training01.py" output="screen"/>
+</launch>

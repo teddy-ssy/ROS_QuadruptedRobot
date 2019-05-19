@@ -1,0 +1,377 @@
+<?xml version="1.0"?>
+<robot >
+
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/hyq</robotNamespace>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+            <alwaysOn>true</alwaysOn>
+            <!--<updateRate>50.0</updateRate>-->
+            <bodyName>trunk</bodyName>
+            <topicName>odom</topicName>
+            <gaussianNoise>0.01</gaussianNoise>
+            <frameName>world</frameName>
+            <xyzOffsets>0 0 0</xyzOffsets>
+            <rpyOffsets>0 0 0</rpyOffsets>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="gazebo_ros_imu_controller" filename="libgazebo_ros_imu.so">
+            <robotNamespace>/hyq</robotNamespace>
+            <topicName>imu/data</topicName>
+            <serviceName>imu/service</serviceName>
+            <bodyName>trunk</bodyName>
+            <gaussianNoise>0</gaussianNoise>
+            <rpyOffsets>0 0 0</rpyOffsets>
+            <!--<updateRate>50.0</updateRate>-->
+            <alwaysOn>true</alwaysOn>
+            <gaussianNoise>0</gaussianNoise>
+        </plugin>
+    </gazebo>
+
+
+     <gazebo reference="base">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+    <gazebo reference="trunk">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+
+     <gazebo reference="lf_hipassembly">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <!--<material>Gazebo/Blue</material>-->
+    </gazebo>
+
+     <gazebo reference="rf_hipassembly">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <!--<material>Gazebo/Blue</material>-->
+    </gazebo>
+
+     <gazebo reference="lh_hipassembly">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <!--<material>Gazebo/Blue</material>-->
+    </gazebo>
+
+     <gazebo reference="rh_hipassembly">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <!--<material>Gazebo/Blue</material>-->
+    </gazebo>
+
+
+     <gazebo reference="lf_upperleg">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <!--<material>Gazebo/Blue</material>-->
+    </gazebo>
+
+     <gazebo reference="rf_upperleg">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <!--<material>Gazebo/Blue</material>-->
+    </gazebo>
+
+     <gazebo reference="lh_upperleg">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <!--<material>Gazebo/Blue</material>-->
+    </gazebo>
+
+     <gazebo reference="rh_upperleg">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <!--<material>Gazebo/Blue</material>-->
+    </gazebo>
+
+
+    <gazebo reference="lf_lowerleg">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <!--<material>Gazebo/Blue</material>-->
+    </gazebo>
+
+    <gazebo reference="rf_lowerleg">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <!--<material>Gazebo/Blue</material>-->
+    </gazebo>
+
+    <gazebo reference="lh_lowerleg">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <!--<material>Gazebo/Blue</material>-->
+    </gazebo>
+
+    <gazebo reference="rh_lowerleg">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <!--<material>Gazebo/Blue</material>-->
+    </gazebo>
+
+
+    <gazebo reference="lf_foot">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>100000000000000000.0</mu1>
+        <mu2>100000000000000000.0</mu2>
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+    <gazebo reference="rf_foot">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>100000000000000000.0</mu1>
+        <mu2>100000000000000000.0</mu2>
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+    <gazebo reference="lh_foot">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>100000000000000000.0</mu1>
+        <mu2>100000000000000000.0</mu2>
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+    <gazebo reference="rh_foot">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>100000000000000000.0</mu1>
+        <mu2>100000000000000000.0</mu2>
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+
+    <gazebo reference="lf_foot">
+        <sensor name="lf_foot_sensor" type="contact">
+          <always_on>true</always_on>
+          <!--<updateRate>100.0</updateRate> -->
+          <contact>
+            <collision>lf_lowerleg_fixed_joint_lump__lf_foot_collision_1</collision>
+          </contact>
+          <plugin name="bumper_lf_plugin" filename="libgazebo_ros_bumper.so">
+            <always_on>true</always_on>
+            <!--<updateRate>100.0</updateRate> -->
+            <bumperTopicName>/contact/lf_foot_state</bumperTopicName>
+            <frameName>lf_foot</frameName>   
+          </plugin>
+        </sensor>
+    </gazebo>
+
+    <gazebo reference="rf_foot">
+        <sensor name="rf_foot_sensor" type="contact">
+          <always_on>true</always_on>
+          <contact>
+            <collision>rf_lowerleg_fixed_joint_lump__rf_foot_collision_1</collision>
+          </contact>
+          <plugin name="bumper_rf_plugin" filename="libgazebo_ros_bumper.so">
+            <always_on>true</always_on>
+            <bumperTopicName>/contact/rf_foot_state</bumperTopicName>
+            <frameName>rf_foot</frameName>   
+          </plugin>
+        </sensor>
+    </gazebo>
+
+    <gazebo reference="lh_foot">
+        <sensor name="lh_foot_sensor" type="contact">
+          <always_on>true</always_on>
+          <contact>
+            <collision>lh_lowerleg_fixed_joint_lump__lh_foot_collision_1</collision>
+          </contact>
+          <plugin name="bumper_lh_plugin" filename="libgazebo_ros_bumper.so">
+            <always_on>true</always_on>
+            <bumperTopicName>/contact/lh_foot_state</bumperTopicName>
+            <frameName>lh_foot</frameName>   
+          </plugin>
+        </sensor>
+    </gazebo>
+
+    <gazebo reference="rh_foot">
+        <sensor name="rh_foot_sensor" type="contact">
+          <always_on>true</always_on>
+          <contact>
+            <collision>rh_lowerleg_fixed_joint_lump__rh_foot_collision_1</collision>
+          </contact>
+          <plugin name="bumper_rh_plugin" filename="libgazebo_ros_bumper.so">
+            <always_on>true</always_on>
+            <bumperTopicName>/contact/rh_foot_state</bumperTopicName>
+            <frameName>rh_foot</frameName>   
+          </plugin>
+        </sensor>
+    </gazebo>
+
+    <transmission name="lf_haa_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="lf_haa_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="lf_haa_jointMotor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="rf_haa_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="rf_haa_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="rf_haa_jointMotor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="lh_haa_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="lh_haa_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="lh_haa_jointMotor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="rh_haa_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="rh_haa_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="rh_haa_jointMotor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="lf_hfe_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="lf_hfe_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="lf_hfe_jointMotor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="rf_hfe_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="rf_hfe_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="rf_hfe_jointMotor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="lh_hfe_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="lh_hfe_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="lh_hfe_jointMotor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="rh_hfe_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="rh_hfe_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="rh_hfe_jointMotor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="lf_kfe_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="lf_kfe_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="lf_kfe_jointMotor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="rf_kfe_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="rf_kfe_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="rf_kfe_jointMotor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="lh_kfe_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="lh_kfe_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="lh_kfe_jointMotor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="rh_kfe_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="rh_kfe_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="rh_kfe_jointMotor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    
+</robot>
