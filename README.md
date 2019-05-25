@@ -33,7 +33,7 @@ the simulation for Qlearning
 the simulation for DDPG
   
 ## Architecture
-<pdf src="https://github.com/teddy-ssy/ROS_QuadruptedRobot/blob/master/readme/Code%20structure.pdf">
+<img src="https://github.com/teddy-ssy/ROS_QuadruptedRobot/blob/master/readme/code%20structure.pdf">
 
 
 ## feature
