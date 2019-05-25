@@ -18,15 +18,19 @@ the project based on the Unbunt system, the reinforcment learning method is impl
 |Unbunt||
 
 ## Preview
-<gif src="https://github.com/teddy-ssy/ROS_QuadruptedRobot/blob/master/readme/bot%20gif1.gif">
+
   
 ![the simulation for joint moving](https://github.com/teddy-ssy/ROS_QuadruptedRobot/blob/master/readme/bot%20gif1.gif)
   
-  the simulation for joint moving
-<gif src="https://github.com/teddy-ssy/ROS_QuadruptedRobot/blob/master/readme/bot%20gif2.gif">
-  the simulation for Qlearning
-<gif src="https://github.com/teddy-ssy/ROS_QuadruptedRobot/blob/master/readme/bot%20gif3.gif">
-  the simulation for DDPG
+the simulation for joint moving
+  
+![the simulation for joint moving](https://github.com/teddy-ssy/ROS_QuadruptedRobot/blob/master/readme/bot%20gif2.gif)
+  
+the simulation for Qlearning
+
+![the simulation for joint moving](https://github.com/teddy-ssy/ROS_QuadruptedRobot/blob/master/readme/bot%20gif3.gif)
+  
+the simulation for DDPG
   
 ## Architecture
 <pdf src="https://github.com/teddy-ssy/ROS_QuadruptedRobot/blob/master/readme/Code%20structure.pdf">
