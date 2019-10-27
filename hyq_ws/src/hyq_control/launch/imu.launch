@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <node name="imu_listener" pkg="hyq_control" type="node_imu.py" output="screen"/>
+
+
+</launch>

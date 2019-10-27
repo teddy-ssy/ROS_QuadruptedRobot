@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+  <rosparam file="$(find hyq_control)/config/hyq.yaml"
+            command="load"/>
+
+  <rosparam file="$(find hyq_control)/config/motion.yaml"
+            command="load"/>
+f
+  <node name="robot_state_publisher_hyq" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen">
+            <param name="publish_frequency" type="double" value="30.0" />
+            <param name="ignore_timestamp" type="bool" value="true" />
+            <remap from="/joint_states" to="/hyq/joint_states" />
+        </node>
+
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" ns="/hyq" args="joint_state_controller
+                              lf_haa_joint_position_controller
+                              lf_hfe_joint_position_controller
+                              lf_kfe_joint_position_controller
+                              lh_haa_joint_position_controller
+                              lh_hfe_joint_position_controller
+                              lh_kfe_joint_position_controller
+                              rf_haa_joint_position_controller
+                              rf_hfe_joint_position_controller
+                              rf_kfe_joint_position_controller
+                              rh_haa_joint_position_controller
+                              rh_hfe_joint_position_controller
+                              rh_kfe_joint_position_controller">
+  </node>
+
+</launch>
