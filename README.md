@@ -18,17 +18,16 @@ the project based on the Unbunt system, the reinforcment learning method is impl
 |Unbunt||
 
 ## Preview
-
-![the simulation for joint moving](https://github.com/teddy-ssy/ROS_QuadruptedRobot/blob/master/readme/demo/balance%20and%20motion.mp4)
+[![Watch the video](https://i.ytimg.com/vi/CWwFI6thNls/hqdefault.jpg)](https://youtu.be/EqM4l8HFdEU)mp4)
 morion plan
 
-![the simulation for joint moving](https://github.com/teddy-ssy/ROS_QuadruptedRobot/blob/master/readme/demo/laser.mp4)
+[![Watch the video](https://i.ytimg.com/vi/EqM4l8HFdEU/hqdefault.jpg)](https://youtu.be/CWwFI6thNls)mp4)
 laser with motion
   
 ## Architecture
 <img src="https://github.com/teddy-ssy/ROS_QuadruptedRobot/blob/master/readme/code%20structue.png">
-<pdf src="https://github.com/teddy-ssy/ROS_QuadruptedRobot/blob/master/readme/urdf%20structure/hyq.pdf">
-<pdf src="https://github.com/teddy-ssy/ROS_QuadruptedRobot/blob/master/readme/transform%20info/frames.pdf">
+<img src="https://github.com/teddy-ssy/ROS_QuadruptedRobot/blob/master/readme/urdf%20structure/hyq.pdf">
+<img src="https://github.com/teddy-ssy/ROS_QuadruptedRobot/blob/master/readme/transform%20info/frames.pdf">
 
 
 ## feature
